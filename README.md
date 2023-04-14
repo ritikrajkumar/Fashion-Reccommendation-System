@@ -1,9 +1,9 @@
-# Fashion-Reccommendation-System
+# Fashion Reccommendation System
 - A machine learning project which suggests similar products as per the user input.
 - **Link for the Dataset:** *https://bit.ly/41qECqO*
 - **Compressed Version:** *https://bit.ly/41sK64j*
 
-## Information on different components of FRS
+## Information On Different Components Of FRS
 - The folder *"images"* is the dataset of our project and it contains over 40K images of fashion products.
 - The folder *"uploads"* is used for locally storing the outputs, i.e. the five most similar products as per user input.
 - The python file *"app.py"* provides user friendly interface for better understanding of the working of Fashion Reccommendation System.
