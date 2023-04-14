@@ -1,0 +1,2 @@
+- Download the dataset (links given in the README file).
+- Put its contents here or replace this folder with the dataset.
