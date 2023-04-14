@@ -11,9 +11,9 @@
 - The python file **"test.py"** is used for testing purpose of the system. Returns the indices of the 6 nearest neighbors including the input.
 
 ## Working Model
-![Working_Model_Image](https://imgur.com/a/u8yqqW3)
+![Working_Model_Image](https://i.imgur.com/km9IBmJ.png)
 
 ## Sample Output
-![Sample_Output_Image](https://imgur.com/tLjRGGK)
+![Sample_Output_Image](https://i.imgur.com/tLjRGGK.png)
 
 
