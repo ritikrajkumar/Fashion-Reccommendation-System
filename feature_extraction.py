@@ -15,9 +15,7 @@ from tensorflow.keras.layers import GlobalMaxPooling2D
 from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
 
 # Load the pre-trained ResNet50 model with pre-trained weights
-model = ResNet50(weights='imagenet', include_top=False,
-                 input_shape=(224, 224, 3))
-
+model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 # Freeze the layers of the pre-trained model to prevent them from being updated during training
 model.trainable = False
 
@@ -29,7 +27,6 @@ model = tensorflow.keras.Sequential([
 
 # Print a summary of the new model to check its architecture
 print(model.summary())
-
 
 # Define a function to extract features from an image using the pre-trained ResNet50 model
 def feature_extraction(img_path, model):
@@ -47,7 +44,6 @@ def feature_extraction(img_path, model):
     normalized_result = result / norm(result)
 
     return normalized_result
-
 
 # Get a list of all image file paths in the "images" directory
 filenames = []

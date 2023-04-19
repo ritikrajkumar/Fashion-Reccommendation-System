@@ -23,8 +23,7 @@ feature_list = np.array(pickle.load(open('embeddings.pkl', 'rb')))
 filenames = pickle.load(open('filenames.pkl', 'rb'))
 
 # Load the pre-trained ResNet50 model with pre-trained weights
-model = ResNet50(weights='imagenet', include_top=False,
-                 input_shape=(224, 224, 3))
+model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 # Freeze the layers of the pre-trained model to prevent them from being updated during training
 model.trainable = False
 
@@ -65,12 +64,15 @@ def feature_extraction(img_path, model):
 
 # function to recommend similar images using k-nearest neighbors
 def recommend(features, feature_list):
-    neighbors = NearestNeighbors(
-        n_neighbors=6, algorithm='brute', metric='euclidean')
+    # create a NearestNeighbors object with 5 neighbors, brute force algorithm, and Euclidean distance metric
+    neighbors = NearestNeighbors(n_neighbors=5, algorithm='brute', metric='euclidean')
+    # fit the NearestNeighbors object to a dataset of feature vectors called feature_list
     neighbors.fit(feature_list)
 
+    # find indices of the 5 nearest neighbors of a given feature vector called normalized_result using the NearestNeighbors object
     distances, indices = neighbors.kneighbors([features])
 
+    # return the indices of the 5 nearest neighbors
     return indices
 
 # function to encode a binary file in base64 format

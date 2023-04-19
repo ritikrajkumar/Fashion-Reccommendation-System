@@ -1,4 +1,4 @@
-'''For testing purpose of the system. Returns the indices of the 6 nearest neighbors including the input.'''
+'''For testing purpose of the system. Returns the indices of the 5 nearest neighbors.'''
 
 # import necessary libraries
 import pickle                   # for loading pickled file
@@ -20,8 +20,7 @@ feature_list = np.array(pickle.load(open('embeddings.pkl', 'rb')))
 filenames = pickle.load(open('filenames.pkl', 'rb'))
 
 # Load the pre-trained ResNet50 model with pre-trained weights
-model = ResNet50(weights='imagenet', include_top=False,
-                 input_shape=(224, 224, 3))
+model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
 # Freeze the layers of the pre-trained model to prevent them from being updated during training
 model.trainable = False
 
@@ -32,7 +31,7 @@ model = tensorflow.keras.Sequential([
 ])
 
 # Load the image from the given path and resize it to the input shape of the pre-trained model
-img = image.load_img('uploads/1163.jpg', target_size=(224, 224))
+img = image.load_img('uploads\sample_image_jeans_man.png', target_size=(224, 224))
 # Convert the image to a NumPy array
 img_array = image.img_to_array(img)
 # Add a new dimension to the array to create a batch of size 1
@@ -44,20 +43,20 @@ result = model.predict(preprocessed_img).flatten()
 # Normalize the feature vector to have unit length
 normalized_result = result / norm(result)
 
-
-neighbors = NearestNeighbors(
-    n_neighbors=6, algorithm='brute', metric='euclidean')  # create a NearestNeighbors object with 6 neighbors, brute force algorithm, and Euclidean distance metric
+# create a NearestNeighbors object with 5 neighbors, brute force algorithm, and Euclidean distance metric
+neighbors = NearestNeighbors(n_neighbors=5, algorithm='brute', metric='euclidean')
 
 # fit the NearestNeighbors object to a dataset of feature vectors called feature_list
 neighbors.fit(feature_list)
 
-# find the distances and indices of the 6 nearest neighbors of a given feature vector called normalized_result using the NearestNeighbors object
+# find indices of the 5 nearest neighbors of a given feature vector called normalized_result using the NearestNeighbors object
 distances, indices = neighbors.kneighbors([normalized_result])
 
-print(indices)  # print the indices of the 6 nearest neighbors
+# print the indices of the 5 nearest neighbors
+print(indices) 
 
-# loop through the indices of the 6 nearest neighbors, excluding the first index which corresponds to the input feature vector
-for file in indices[0][1:6]:
+# loop through the indices of the 5 nearest neighbors, excluding the first index which corresponds to the input feature vector
+for file in indices[0]:
     # load the image corresponding to the current index using OpenCV's imread function and the filenames list
     temp_img = cv2.imread(filenames[file])
     # resize the image to 512x512 pixels and display it using OpenCV's imshow function
