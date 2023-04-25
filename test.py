@@ -11,7 +11,7 @@ from tensorflow.keras.preprocessing import image
 # for performing max pooling operation on the spatial dimensions of 2D inputs
 from tensorflow.keras.layers import GlobalMaxPooling2D
 # for use in transfer learning applications
-from tensorflow.keras.applications.resnet50 import ResNet50, preprocess_input
+from tensorflow.keras.applications.resnet import ResNet50, preprocess_input
 # provides unsupervised machine learning methods for nearest neighbor search and clusterin
 from sklearn.neighbors import NearestNeighbors
 
@@ -31,7 +31,7 @@ model = tensorflow.keras.Sequential([
 ])
 
 # Load the image from the given path and resize it to the input shape of the pre-trained model
-img = image.load_img('uploads\sample_image_jeans_man.png', target_size=(224, 224))
+img = image.load_img('uploads\saree.jpg', target_size=(224, 224))
 # Convert the image to a NumPy array
 img_array = image.img_to_array(img)
 # Add a new dimension to the array to create a batch of size 1
