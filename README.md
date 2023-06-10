@@ -12,7 +12,7 @@
 
 
 ## Working Model
-<img src="https://i.imgur.com/km9IBmJ.png" width="750">
+<img src="https://i.imgur.com/74ZKSWK.png" width="750">
 
 ## Sample Output
-<img src="https://imagizer.imageshack.com/img922/2867/oAs02G.png" width="750">
+<img src="https://i.imgur.com/uc7S6sU.png" width="750">
